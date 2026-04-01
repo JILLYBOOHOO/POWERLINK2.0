@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#eef7fc"/>
+  <circle cx="320" cy="188" r="112" fill="#0d3b66"/>
+  <circle cx="320" cy="188" r="72" fill="#d7edf8"/>
+  <path d="M248 188h144M320 116v144M272 140l96 96M368 140l-96 96" stroke="#2f7ea3" stroke-width="16" stroke-linecap="round"/>
+  <text x="320" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#0d3b66">Drain Care</text>
+</svg>

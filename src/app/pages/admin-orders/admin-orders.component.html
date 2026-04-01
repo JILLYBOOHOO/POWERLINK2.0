@@ -1,0 +1,64 @@
+<section class="admin-hero">
+  <div class="container">
+    <p class="admin-eyebrow">Operations</p>
+    <h1>Order dashboard</h1>
+    <p>Track live plumbing bookings and supply orders from one place.</p>
+  </div>
+</section>
+
+<section class="admin-page">
+  <div class="container">
+    <div class="admin-switcher">
+      <a routerLink="/admin/orders" routerLinkActive="active-admin-link" [routerLinkActiveOptions]="{ exact: true }">Orders</a>
+      <a routerLink="/admin/plumbers" routerLinkActive="active-admin-link">Plumber Desk</a>
+    </div>
+
+    <div class="admin-metrics">
+      <div class="admin-metric-card">
+        <span>Total orders</span>
+        <strong>{{ adminService.orders.length }}</strong>
+      </div>
+      <div class="admin-metric-card">
+        <span>Active bookings</span>
+        <strong>{{ activeBookings }}</strong>
+      </div>
+      <div class="admin-metric-card">
+        <span>Revenue today</span>
+        <strong>${{ totalRevenue }}</strong>
+      </div>
+    </div>
+
+    <div class="admin-table-card">
+      <div class="admin-table-header">
+        <div>
+          <h2>Recent orders</h2>
+          <p>Mock operational data for the plumbing storefront.</p>
+        </div>
+      </div>
+
+      <div class="admin-order-row" *ngFor="let order of adminService.orders">
+        <div>
+          <p class="admin-label">{{ order.reference }}</p>
+          <h3>{{ order.item }}</h3>
+          <p>{{ order.customer }} • {{ order.submittedAt }}</p>
+        </div>
+        <div>
+          <p class="admin-label">Type</p>
+          <strong>{{ order.type }}</strong>
+        </div>
+        <div>
+          <p class="admin-label">Fulfillment</p>
+          <strong>{{ order.fulfillment }}</strong>
+        </div>
+        <div>
+          <p class="admin-label">Status</p>
+          <span class="status-pill">{{ order.status }}</span>
+        </div>
+        <div>
+          <p class="admin-label">Total</p>
+          <strong>${{ order.total }}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

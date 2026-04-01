@@ -1,0 +1,48 @@
+.site-footer {
+  margin-top: 64px;
+  padding: 28px 20px 34px;
+  background: #102a43;
+  color: #fff;
+}
+
+.footer-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.2fr) repeat(2, minmax(180px, 0.8fr));
+  gap: 28px;
+  align-items: start;
+}
+
+.footer-brand h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+
+.footer-brand p,
+.footer-meta span {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.footer-links {
+  display: grid;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer-meta {
+  display: grid;
+  gap: 10px;
+}
+
+@media (max-width: 768px) {
+  .footer-inner {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}

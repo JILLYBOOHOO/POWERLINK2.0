@@ -1,0 +1,165 @@
+.signup-wrapper {
+  min-height: calc(100vh - 160px);
+  background: linear-gradient(to right, #123c6b, #0d2c4f);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.signup-card {
+  background: rgb(255, 255, 255);
+  padding: 40px;
+  width: min(460px, 100%);
+  border-radius: 22px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+  animation: fadeIn 0.7s ease-in-out;
+}
+
+.signup-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: #eef7fc;
+  color: #0d3b66;
+  font-weight: 700;
+}
+
+.signup-brand img {
+  width: 34px;
+  height: 34px;
+}
+
+.signup-tag {
+  display: inline-block;
+  margin: 0 0 12px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #eef7fc;
+  color: #0d3b66 !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.signup-card h2 {
+  text-align: left;
+  margin: 0 0 8px;
+}
+
+.signup-intro {
+  text-align: left !important;
+  color: #52667a !important;
+  margin-bottom: 24px !important;
+}
+
+.input-group {
+  margin-bottom: 10px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 6px;
+  color: #102a43;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  transition: 0.3s;
+}
+
+input:focus {
+  border-color: #123c6b;
+  box-shadow: 0 0 8px rgba(18,60,107,0.3);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #ff7a00;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #e66c00;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+.error {
+  font-size: 12px;
+  color: red;
+  margin-bottom: 8px;
+}
+
+.strength {
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+.helper-text {
+  font-size: 12px;
+  color: #52667a;
+  margin-bottom: 12px;
+}
+
+.weak { color: red; }
+.medium { color: orange; }
+.strong { color: green; }
+
+.terms-check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 16px 0 10px;
+  color: #22415d;
+  font-size: 0.92rem;
+}
+
+.terms-check input {
+  width: auto;
+  margin: 2px 0 0;
+}
+
+.login-link {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.form-feedback {
+  margin-top: 12px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.form-feedback.success {
+  background: #e8f7ee;
+  color: #186a3b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .signup-card {
+    padding: 28px 20px;
+  }
+}

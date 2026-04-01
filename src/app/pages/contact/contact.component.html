@@ -1,0 +1,125 @@
+<section class="contact-hero">
+  <div class="container contact-hero-layout">
+    <div class="contact-hero-copy">
+      <p class="section-tag">Contact PowerLink</p>
+      <h1>Speak with the team about bookings, supplies, or urgent plumbing support.</h1>
+      <p>Use the contact form for service requests, supply questions, or account help. For urgent plumbing issues, call the support line directly.</p>
+    </div>
+
+    <div class="contact-hero-panel">
+      <div>
+        <span>Support Line</span>
+        <strong>{{ supportPhone }}</strong>
+      </div>
+      <div>
+        <span>Service Base</span>
+        <strong>Kingston, Jamaica</strong>
+      </div>
+      <div>
+        <span>Response Window</span>
+        <strong>24/7 emergency coverage</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-container">
+  <div class="contact-form-card">
+    <p class="section-tag">Message Form</p>
+    <h2>Send a request</h2>
+    <p class="contact-intro">A team member can respond to booking questions, store support, or urgent plumbing coordination.</p>
+
+    <form [formGroup]="contactForm" (ngSubmit)="submitForm()">
+      <div class="form-group">
+        <input type="text" placeholder="Full Name" formControlName="fullName">
+      </div>
+
+      <div class="form-group">
+        <input type="email" placeholder="Email Address" formControlName="email">
+      </div>
+
+      <div class="form-group">
+        <input type="text" placeholder="Phone Number" formControlName="phone">
+      </div>
+
+      <div class="form-group">
+        <select formControlName="service">
+          <option value="">Select Service</option>
+          <option>Plumber Booking</option>
+          <option>Plumbing Supplies</option>
+          <option>Emergency Plumbing</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <textarea rows="4" placeholder="Your Message" formControlName="message"></textarea>
+      </div>
+
+      <button type="submit" [disabled]="contactForm.invalid">
+        Send Message
+      </button>
+
+      <div class="contact-feedback" *ngIf="feedbackMessage">
+        {{ feedbackMessage }}
+      </div>
+
+      <div class="contact-feedback error-feedback" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+
+  <div class="contact-info-card">
+    <p class="section-tag">Direct Contact</p>
+    <h2>Support and location</h2>
+
+    <div class="info-item">
+      <strong>Office:</strong>
+      <a [href]="mapsUrl" target="_blank" rel="noopener noreferrer">{{ officeAddress }}</a>
+    </div>
+
+    <div class="info-item">
+      <strong>Phone:</strong>
+      <a [href]="emergencyUrl">{{ supportPhone }}</a>
+    </div>
+
+    <div class="info-item">
+      <strong>Email:</strong>
+      <a [href]="emailUrl">{{ supportEmail }}</a>
+    </div>
+
+    <div class="support-box">
+      <h3>24/7 Customer Support</h3>
+      <p>Emergency plumbing calls are monitored throughout the day and night for urgent leaks, burst pipes, blocked drains, and service dispatch.</p>
+      <div class="support-actions">
+        <a class="support-link primary-link" [href]="emergencyUrl">Call Support Now</a>
+        <a class="support-link" [href]="emailUrl">Email Support</a>
+      </div>
+    </div>
+
+    <div class="contact-service-list">
+      <h3>Common reasons customers contact us</h3>
+      <ul>
+        <li>Plumber scheduling and booking changes</li>
+        <li>Supply availability and product guidance</li>
+        <li>Delivery, pickup, and order support</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <div class="container">
+    <div class="map-section-heading">
+      <p class="section-tag">Location</p>
+      <h2>Kingston service hub</h2>
+    </div>
+  <div class="map-placeholder">
+    <div>
+      <strong>Kingston Service Hub</strong>
+      <p>{{ officeAddress }}</p>
+      <a class="map-link" [href]="mapsUrl" target="_blank" rel="noopener noreferrer">Open in Google Maps</a>
+    </div>
+  </div>
+  </div>
+</section>

@@ -1,0 +1,196 @@
+<section class="payment-hero">
+  <div class="container payment-hero-layout">
+    <div class="payment-hero-copy">
+      <p class="payment-eyebrow">Checkout</p>
+      <h1>Secure payment for your plumbing order</h1>
+      <p>Review the final details, confirm billing, and place the order with a clear summary.</p>
+    </div>
+
+    <div class="payment-hero-panel">
+      <div>
+        <span>Order Type</span>
+        <strong>{{ isPlumberBooking ? 'Plumber Booking' : 'Supply Order' }}</strong>
+      </div>
+      <div>
+        <span>Total Due</span>
+        <strong>${{ totalPrice }}</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="payment-container">
+  <div class="payment-form-card">
+    <div class="checkout-section-heading">
+      <p class="item-category">Billing</p>
+      <h2>Billing details</h2>
+      <p>Use the details linked to this order so delivery, pickup, or service scheduling is handled correctly.</p>
+    </div>
+
+    <form [formGroup]="paymentForm" (ngSubmit)="submitPayment()">
+      <input type="text" placeholder="Full Name" formControlName="fullName">
+      <input type="email" placeholder="Email Address" formControlName="email">
+
+      <div class="inline-section-heading">
+        <h3>Payment method</h3>
+        <span>Encrypted</span>
+      </div>
+
+      <div class="payment-methods">
+        <div class="method active">Visa</div>
+        <div class="method">Mastercard</div>
+        <div class="method">PayPal</div>
+      </div>
+
+      <input type="text" placeholder="Card Number" formControlName="cardNumber">
+
+      <div class="row">
+        <input type="text" placeholder="MM/YY" formControlName="expiry">
+        <input type="text" placeholder="CVV" formControlName="cvv">
+      </div>
+
+      <div class="booking-block" *ngIf="isPlumberBooking">
+        <div class="inline-section-heading">
+          <h3>Booking schedule</h3>
+          <span>Choose a slot</span>
+        </div>
+        <div class="booking-intro">
+          <strong>{{ providerName || 'Assigned plumber' }}</strong>
+          <span *ngIf="serviceSpecialty">{{ serviceSpecialty }}</span>
+          <span *ngIf="serviceArea">{{ serviceArea }}</span>
+        </div>
+        <div class="calendar-picker">
+          <button
+            type="button"
+            class="calendar-chip"
+            *ngFor="let option of availableDates"
+            [class.active-chip]="paymentForm.get('serviceDate')?.value === option.value"
+            (click)="selectServiceDate(option.value)">
+            {{ option.label }}
+          </button>
+        </div>
+        <div class="time-picker">
+          <button
+            type="button"
+            class="time-chip"
+            *ngFor="let slot of availableTimes"
+            [class.active-chip]="paymentForm.get('serviceTime')?.value === slot"
+            (click)="selectServiceTime(slot)">
+            {{ slot }}
+          </button>
+        </div>
+        <div class="row">
+          <input type="date" formControlName="serviceDate">
+          <input type="time" formControlName="serviceTime">
+        </div>
+        <textarea
+          rows="4"
+          placeholder="Add access notes or describe the issue"
+          formControlName="serviceNotes"></textarea>
+      </div>
+
+      <div class="fulfillment-block" *ngIf="checkoutMode === 'cart'">
+        <div class="inline-section-heading">
+          <h3>Fulfillment</h3>
+          <span>Select one</span>
+        </div>
+        <div class="payment-methods">
+          <button type="button" class="method" [class.active]="fulfillmentMode === 'delivery'" (click)="setFulfillment('delivery')">
+            Delivery
+          </button>
+          <button type="button" class="method" [class.active]="fulfillmentMode === 'pickup'" (click)="setFulfillment('pickup')">
+            Pickup
+          </button>
+        </div>
+      </div>
+
+      <div class="inline-section-heading">
+        <h3>Billing address</h3>
+        <span>{{ fulfillmentMode === 'pickup' ? 'Pickup ready' : 'Delivery destination' }}</span>
+      </div>
+
+      <input
+        type="text"
+        [placeholder]="fulfillmentMode === 'pickup' ? 'Pickup location' : 'Street Address'"
+        formControlName="address">
+
+      <div class="row">
+        <input type="text" placeholder="City" formControlName="city">
+        <input type="text" placeholder="Country" formControlName="country">
+      </div>
+
+      <div class="checkout-note" *ngIf="isSupplyCheckout">
+        Single-item supply orders include direct delivery by default.
+      </div>
+
+      <button type="submit" [disabled]="paymentForm.invalid">
+        Pay Now
+      </button>
+
+      <div class="payment-feedback payment-error" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+    </form>
+  </div>
+
+  <div class="summary-card">
+    <div class="summary-kicker">Order Summary</div>
+    <h2>{{ selectedPlan }}</h2>
+    <p class="summary-lead">Final charges and service details are listed below before payment is placed.</p>
+
+    <div class="summary-cart" *ngIf="checkoutMode === 'cart' && cartService.cartItems.length > 0">
+      <div class="summary-item" *ngFor="let item of cartService.cartItems">
+        <span>{{ item.name }} x{{ item.quantity }}</span>
+        <span>${{ item.price * item.quantity }}</span>
+      </div>
+
+      <hr>
+    </div>
+
+    <div class="summary-item">
+      <span>{{ selectedPlan }}</span>
+      <span>${{ planPrice }}</span>
+    </div>
+
+    <div class="summary-item">
+      <span>{{ feeLabel }}</span>
+      <span>${{ serviceFee }}</span>
+    </div>
+
+    <div class="summary-item" *ngIf="isPlumberBooking && providerName">
+      <span>Plumber</span>
+      <span>{{ providerName }}</span>
+    </div>
+
+    <div class="summary-item" *ngIf="isPlumberBooking && paymentForm.get('serviceDate')?.value">
+      <span>Service date</span>
+      <span>{{ paymentForm.get('serviceDate')?.value | date:'mediumDate' }}</span>
+    </div>
+
+    <div class="summary-item" *ngIf="isPlumberBooking && paymentForm.get('serviceTime')?.value">
+      <span>Service time</span>
+      <span>{{ paymentForm.get('serviceTime')?.value }}</span>
+    </div>
+
+    <div class="summary-item" *ngIf="checkoutMode === 'cart'">
+      <span>Fulfillment</span>
+      <span>{{ fulfillmentMode === 'delivery' ? 'Delivery' : 'Pickup' }}</span>
+    </div>
+
+    <div class="summary-item" *ngIf="isSupplyCheckout">
+      <span>Fulfillment</span>
+      <span>Delivery</span>
+    </div>
+
+    <hr>
+
+    <div class="summary-total">
+      <span>Total</span>
+      <span>${{ totalPrice }}</span>
+    </div>
+
+    <div class="secure-box">
+      Secure SSL Encryption
+    </div>
+  </div>
+</section>

@@ -1,0 +1,62 @@
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a class="logo" routerLink="/">
+      <svg width="42" height="42" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="256" height="256" rx="56" fill="#0D3B66"/>
+        <rect x="48" y="64" width="112" height="28" rx="14" fill="#F4A261"/>
+        <rect x="132" y="64" width="28" height="98" rx="14" fill="#F4A261"/>
+        <rect x="132" y="134" width="68" height="28" rx="14" fill="#F4A261"/>
+        <rect x="172" y="134" width="28" height="74" rx="14" fill="#F4A261"/>
+        <path d="M107 120C123 140 136 155 136 174C136 196 118 214 96 214C74 214 56 196 56 174C56 155 69 140 85 120C90 113 102 113 107 120Z" fill="#EEF7FC"/>
+        <path d="M96 144C104 154 112 163 112 174C112 183 105 190 96 190C87 190 80 183 80 174C80 163 88 154 96 144Z" fill="#2F7EA3"/>
+      </svg>
+      <span class="brand-block">
+        <strong>PowerLink Plumbing</strong>
+        <small>Service bookings and supply orders</small>
+      </span>
+    </a>
+
+    <ul class="nav-links">
+      <li>
+        <a routerLink="/" routerLinkActive="active-link" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+      </li>
+      <li>
+        <a routerLink="/plumbers" routerLinkActive="active-link">Plumbers</a>
+      </li>
+      <li>
+        <a routerLink="/supplies" routerLinkActive="active-link" class="nav-link-with-badge">
+          Supplies
+          <span class="cart-badge" *ngIf="cartService.totalItems > 0">{{ cartService.totalItems }}</span>
+        </a>
+      </li>
+      <li>
+        <a routerLink="/cart" routerLinkActive="active-link">Cart</a>
+      </li>
+      <li>
+        <a routerLink="/contact" routerLinkActive="active-link">Contact</a>
+      </li>
+      <li>
+        <a routerLink="/account" routerLinkActive="active-link" *ngIf="authService.isLoggedIn()">Account</a>
+      </li>
+      <li>
+        <a routerLink="/admin/orders" routerLinkActive="active-link" *ngIf="authService.isAdmin()">Admin</a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <span class="user-chip" *ngIf="authService.isLoggedIn()">
+        {{ authService.getCurrentUser()?.fullName }}
+      </span>
+      <button routerLink="/account" class="login-btn" *ngIf="authService.isLoggedIn()">My Account</button>
+      <button routerLink="/login" class="login-btn" *ngIf="!authService.isLoggedIn()">Login</button>
+      <button routerLink="/signup" class="signup-btn" *ngIf="!authService.isLoggedIn()">Sign Up</button>
+      <button routerLink="/plumber-register" class="utility-btn">Register Plumber</button>
+      <button routerLink="/admin/login" class="utility-btn" *ngIf="!authService.isAdmin()">Admin Login</button>
+      <button routerLink="/admin/orders" class="utility-btn" *ngIf="authService.isAdmin()">Admin Panel</button>
+      <button type="button" class="login-btn" *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</button>
+      <button routerLink="/cart" class="cart-button" *ngIf="cartService.totalItems > 0">
+        Cart ({{ cartService.totalItems }})
+      </button>
+    </div>
+  </div>
+</nav>

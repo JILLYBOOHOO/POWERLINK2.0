@@ -1,0 +1,108 @@
+<section class="cart-hero">
+  <div class="container">
+    <p class="cart-eyebrow">Supply Order</p>
+    <h1>Review your plumbing cart before checkout.</h1>
+    <p>Adjust quantities, remove items, and confirm your supply total before paying.</p>
+  </div>
+</section>
+
+<section class="cart-page">
+  <div class="container cart-layout">
+    <div class="cart-list-card">
+      <div class="sync-banner inline-banner" *ngIf="cartService.syncMessage">
+        <span class="sync-dot" [class.offline-dot]="cartService.syncState === 'offline'" [class.syncing-dot]="cartService.syncState === 'syncing'"></span>
+        {{ cartService.syncMessage }}
+      </div>
+
+      <div class="cart-header-row">
+        <div>
+          <h2>Your Cart</h2>
+          <p>{{ cartService.totalItems }} items selected</p>
+        </div>
+        <button type="button" class="clear-button" *ngIf="cartService.totalItems > 0" (click)="cartService.clear()">
+          Clear Cart
+        </button>
+      </div>
+
+      <div class="empty-cart" *ngIf="cartService.cartItems.length === 0">
+        <h3>Your cart is empty.</h3>
+        <p>Add plumbing supplies from the store to build your order.</p>
+        <button type="button" routerLink="/supplies">Back to Store</button>
+      </div>
+
+      <div class="cart-item-row" *ngFor="let item of cartService.cartItems">
+        <div class="cart-item-info">
+          <p class="item-category">{{ item.category }}</p>
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.unit }} at ${{ item.price }} each</p>
+        </div>
+
+        <div class="cart-item-controls">
+          <div class="quantity-group">
+            <button type="button" (click)="cartService.updateQuantity(item.name, item.quantity - 1)">-</button>
+            <span>{{ item.quantity }}</span>
+            <button type="button" (click)="cartService.updateQuantity(item.name, item.quantity + 1)">+</button>
+          </div>
+
+          <strong>${{ item.price * item.quantity }}</strong>
+          <button type="button" class="remove-button" (click)="cartService.removeItem(item.name)">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <aside class="cart-summary-card">
+      <h2>Order Summary</h2>
+
+      <div class="fulfillment-card">
+        <p class="item-category">Fulfillment</p>
+        <div class="fulfillment-options">
+          <button
+            type="button"
+            class="fulfillment-button"
+            [class.active-option]="fulfillmentMode === 'delivery'"
+            (click)="fulfillmentMode = 'delivery'">
+            Delivery
+          </button>
+          <button
+            type="button"
+            class="fulfillment-button"
+            [class.active-option]="fulfillmentMode === 'pickup'"
+            (click)="fulfillmentMode = 'pickup'">
+            Pickup
+          </button>
+        </div>
+        <p class="fulfillment-note" *ngIf="fulfillmentMode === 'delivery'">Delivered to your address for ${{ deliveryFee }}.</p>
+        <p class="fulfillment-note" *ngIf="fulfillmentMode === 'pickup'">Pick up from the Kingston supply counter with no extra fee.</p>
+      </div>
+
+      <div class="summary-line">
+        <span>Items</span>
+        <span>{{ cartService.totalItems }}</span>
+      </div>
+
+      <div class="summary-line">
+        <span>Subtotal</span>
+        <span>${{ cartService.subtotal }}</span>
+      </div>
+
+      <div class="summary-line">
+        <span>{{ fulfillmentMode === 'delivery' ? 'Delivery' : 'Pickup' }}</span>
+        <span>${{ fulfillmentFee }}</span>
+      </div>
+
+      <hr>
+
+      <div class="summary-total-line">
+        <span>Total</span>
+        <span>${{ totalPrice }}</span>
+      </div>
+
+      <button type="button" [disabled]="cartService.cartItems.length === 0" (click)="proceedToCheckout()">
+        Proceed to Payment
+      </button>
+      <button type="button" class="secondary-button" routerLink="/supplies">
+        Continue Shopping
+      </button>
+    </aside>
+  </div>
+</section>

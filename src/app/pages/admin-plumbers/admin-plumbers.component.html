@@ -1,0 +1,93 @@
+<section class="admin-hero">
+  <div class="container">
+    <p class="admin-eyebrow">Operations</p>
+    <h1>Plumber desk</h1>
+    <p>Manage active professionals and review incoming registrations.</p>
+  </div>
+</section>
+
+<section class="admin-page">
+  <div class="container">
+    <div class="admin-switcher">
+      <a routerLink="/admin/orders" routerLinkActive="active-admin-link">Orders</a>
+      <a routerLink="/admin/plumbers" routerLinkActive="active-admin-link" [routerLinkActiveOptions]="{ exact: true }">Plumber Desk</a>
+    </div>
+
+    <div class="admin-metrics">
+      <div class="admin-metric-card">
+        <span>Active plumbers</span>
+        <strong>{{ plumbersService.plumbers.length }}</strong>
+      </div>
+      <div class="admin-metric-card">
+        <span>Pending reviews</span>
+        <strong>{{ pendingCount }}</strong>
+      </div>
+      <div class="admin-metric-card">
+        <span>Average rating</span>
+        <strong>4.8</strong>
+      </div>
+    </div>
+
+    <div class="admin-table-card">
+      <div class="admin-table-header">
+        <div>
+          <h2>Live plumber network</h2>
+          <p>Current professionals visible to customers.</p>
+        </div>
+      </div>
+
+      <div class="admin-order-row" *ngFor="let plumber of plumbersService.plumbers">
+        <div>
+          <p class="admin-label">{{ plumber.specialty }}</p>
+          <h3>{{ plumber.name }}</h3>
+          <p>{{ plumber.location }} • {{ plumber.responseTime }}</p>
+        </div>
+        <div>
+          <p class="admin-label">Availability</p>
+          <strong>{{ plumber.availability }}</strong>
+        </div>
+        <div>
+          <p class="admin-label">Service fee</p>
+          <strong>${{ plumber.serviceFee }}</strong>
+        </div>
+        <div>
+          <p class="admin-label">Reviews</p>
+          <strong>{{ plumber.reviewCount }}</strong>
+        </div>
+        <div>
+          <p class="admin-label">Rating</p>
+          <span class="status-pill">{{ plumber.rating }} / 5</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="admin-table-card registrations-card">
+      <div class="admin-table-header">
+        <div>
+          <h2>Recent registrations</h2>
+          <p>New plumber onboarding requests waiting for admin review.</p>
+        </div>
+      </div>
+
+      <div class="admin-order-row" *ngFor="let item of adminService.registrations">
+        <div>
+          <p class="admin-label">{{ item.submittedAt }}</p>
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.specialty }}</p>
+        </div>
+        <div>
+          <p class="admin-label">Location</p>
+          <strong>{{ item.location }}</strong>
+        </div>
+        <div>
+          <p class="admin-label">Experience</p>
+          <strong>{{ item.experience }} years</strong>
+        </div>
+        <div>
+          <p class="admin-label">Stage</p>
+          <span class="status-pill">{{ item.status }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

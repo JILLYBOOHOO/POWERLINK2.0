@@ -1,0 +1,43 @@
+<section class="plumber-register-page">
+  <div class="container plumber-register-layout">
+    <div class="register-copy">
+      <p class="section-tag">Join PowerLink</p>
+      <h1>Register as a plumber.</h1>
+      <p>Apply once and get reviewed for customer bookings, property work, and supply-linked jobs.</p>
+
+      <div class="register-points">
+        <div>
+          <strong>Verified listings</strong>
+          <span>Appear in the customer plumber directory after review.</span>
+        </div>
+        <div>
+          <strong>Admin review</strong>
+          <span>Your details go directly to the PowerLink admin desk.</span>
+        </div>
+        <div>
+          <strong>Local jobs</strong>
+          <span>Customers can book by specialty, area, and availability.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="register-card">
+      <h2>Professional Details</h2>
+      <form [formGroup]="plumberForm" (ngSubmit)="submit()">
+        <div class="form-grid">
+          <input type="text" class="form-control" placeholder="Full Name" formControlName="name">
+          <input type="text" class="form-control" placeholder="Specialty" formControlName="specialty">
+          <input type="text" class="form-control" placeholder="Location" formControlName="location">
+          <input type="number" class="form-control" placeholder="Years of Experience" formControlName="experience">
+          <input type="email" class="form-control full-width" placeholder="Email Address" formControlName="email">
+        </div>
+
+        <button type="submit">Submit Registration</button>
+      </form>
+
+      <div class="page-feedback" *ngIf="formMessage">
+        {{ formMessage }}
+      </div>
+    </div>
+  </div>
+</section>

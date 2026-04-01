@@ -1,0 +1,30 @@
+<svg width="760" height="860" viewBox="0 0 760 860" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nadiaBg" x1="111" y1="88" x2="665" y2="788" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF0E5"/>
+      <stop offset="1" stop-color="#F7FBFF"/>
+    </linearGradient>
+    <linearGradient id="nadiaShirt" x1="263" y1="334" x2="430" y2="735" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFAB66"/>
+      <stop offset="1" stop-color="#E56C1D"/>
+    </linearGradient>
+  </defs>
+  <rect width="760" height="860" rx="40" fill="url(#nadiaBg)"/>
+  <circle cx="160" cy="162" r="90" fill="#FFD8B9"/>
+  <rect x="82" y="566" width="596" height="212" rx="32" fill="#FFF7F0"/>
+  <path d="M246 416C246 348 301 293 369 293H390C458 293 513 348 513 416V596C513 664 458 719 390 719H369C301 719 246 664 246 596V416Z" fill="url(#nadiaShirt)"/>
+  <path d="M317 318C337 332 364 340 390 340C416 340 440 334 459 320V272H317V318Z" fill="#D59875"/>
+  <circle cx="388" cy="216" r="104" fill="#E0A17D"/>
+  <path d="M286 226C286 131 339 84 411 84C481 84 517 142 517 222V281H286V226Z" fill="#243B4A"/>
+  <path d="M285 389L222 701H316L351 526L327 441L285 389Z" fill="#F39F5C"/>
+  <path d="M473 392L541 701H444L416 524L438 441L473 392Z" fill="#F39F5C"/>
+  <path d="M322 441C342 461 367 472 391 472C416 472 439 462 456 445L495 494C469 524 435 539 391 539C348 539 311 522 289 493L322 441Z" fill="#0D3B66"/>
+  <rect x="471" y="416" width="159" height="40" rx="20" fill="#D8E7F4"/>
+  <path d="M533 417C549 392 575 376 604 376C634 376 659 391 675 417V456H533V417Z" fill="#87A9C3"/>
+  <rect x="124" y="620" width="181" height="116" rx="24" fill="#FFFFFF"/>
+  <rect x="148" y="646" width="92" height="14" rx="7" fill="#89A7BE"/>
+  <rect x="148" y="671" width="128" height="12" rx="6" fill="#D3E1EC"/>
+  <rect x="344" y="620" width="298" height="116" rx="24" fill="#FFFFFF"/>
+  <rect x="369" y="646" width="107" height="14" rx="7" fill="#89A7BE"/>
+  <rect x="369" y="671" width="167" height="12" rx="6" fill="#D3E1EC"/>
+</svg>

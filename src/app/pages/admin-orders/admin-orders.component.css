@@ -1,0 +1,100 @@
+.admin-hero {
+  padding: 72px 20px;
+  background: linear-gradient(135deg, #0d3b66, #184e77);
+  color: white;
+}
+
+.admin-eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.admin-page {
+  padding: 40px 20px 64px;
+}
+
+.admin-switcher {
+  display: inline-flex;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding: 8px;
+  background: white;
+  border-radius: 999px;
+  box-shadow: 0 12px 28px rgba(13, 59, 102, 0.08);
+}
+
+.admin-switcher a {
+  text-decoration: none;
+  color: #0d3b66;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 999px;
+}
+
+.active-admin-link {
+  background: #0d3b66;
+  color: white !important;
+}
+
+.admin-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.admin-metric-card,
+.admin-table-card {
+  background: white;
+  border-radius: 22px;
+  padding: 24px;
+  box-shadow: 0 14px 35px rgba(13, 59, 102, 0.1);
+}
+
+.admin-metric-card span,
+.admin-label,
+.admin-table-card p {
+  color: #52667a;
+}
+
+.admin-metric-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 2rem;
+  color: #0d3b66;
+}
+
+.admin-table-header {
+  margin-bottom: 8px;
+}
+
+.admin-order-row {
+  display: grid;
+  grid-template-columns: 1.8fr repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  align-items: center;
+  padding: 18px 0;
+  border-top: 1px solid #e6edf5;
+}
+
+.admin-order-row h3 {
+  margin: 4px 0;
+}
+
+.status-pill {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #eef7fc;
+  color: #1d6fa5;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .admin-metrics,
+  .admin-order-row {
+    grid-template-columns: 1fr;
+  }
+}

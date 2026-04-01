@@ -1,0 +1,25 @@
+<div class="login-container">
+  <div class="auth-brand">
+    <img src="assets/powerlink-icon.svg" alt="PowerLink logo" width="42" height="42">
+    <span>PowerLink Plumbing</span>
+  </div>
+  <h2>Customer Login</h2>
+  <p>Access your supply orders, plumber bookings, and payment history.</p>
+
+  <form [formGroup]="loginForm" (ngSubmit)="submit()">
+    <input type="email" placeholder="Email" formControlName="email">
+    <div class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+      Enter a valid email address.
+    </div>
+
+    <input type="password" placeholder="Password" formControlName="password">
+    <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+      Password must be at least 6 characters.
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+
+  <p class="feedback" *ngIf="feedbackMessage">{{ feedbackMessage }}</p>
+  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+</div>

@@ -1,0 +1,63 @@
+<section class="account-page">
+  <div class="container">
+    <div class="account-hero-card">
+      <p class="section-tag">Customer Account</p>
+      <h1>{{ customerName }}</h1>
+      <p>Review recent supply orders and service bookings in one account workspace.</p>
+
+      <div class="account-overview-grid">
+        <div class="account-overview-card">
+          <span>Orders on record</span>
+          <strong>{{ orders.length }}</strong>
+        </div>
+        <div class="account-overview-card">
+          <span>Backend status</span>
+          <strong>{{ backendStatus.includes('unavailable') ? 'Offline' : 'Connected' }}</strong>
+        </div>
+      </div>
+
+      <div class="sync-banner inline-banner">
+        <span class="sync-dot" [class.offline-dot]="backendStatus.includes('unavailable')"></span>
+        {{ backendStatus }}
+      </div>
+    </div>
+
+    <div class="account-state-card" *ngIf="loading">
+      Loading your account orders...
+    </div>
+
+    <div class="account-state-card" *ngIf="!loading && errorMessage">
+      {{ errorMessage }}
+    </div>
+
+    <div class="account-list-card" *ngIf="!loading && !errorMessage && orders.length > 0">
+      <div class="account-list-header">
+        <h2>Recent orders</h2>
+        <p>Latest confirmed supply orders and plumber bookings tied to your account.</p>
+      </div>
+      <div class="account-order-row" *ngFor="let order of orders">
+        <div>
+          <p class="item-category">{{ order.type }}</p>
+          <h3>{{ order.item }}</h3>
+          <p>{{ order.reference }}</p>
+        </div>
+        <div>
+          <p class="item-category">Fulfillment</p>
+          <strong>{{ order.fulfillment }}</strong>
+        </div>
+        <div>
+          <p class="item-category">Status</p>
+          <strong>{{ order.status }}</strong>
+        </div>
+        <div>
+          <p class="item-category">Total</p>
+          <strong>${{ order.total }}</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="account-state-card" *ngIf="!loading && !errorMessage && orders.length === 0">
+      No orders yet. Start with the plumbing store or book a plumber.
+    </div>
+  </div>
+</section>

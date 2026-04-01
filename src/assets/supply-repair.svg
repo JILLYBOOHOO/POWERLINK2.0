@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#eff8f2"/>
+  <rect x="176" y="118" width="288" height="144" rx="24" fill="#0d3b66"/>
+  <rect x="214" y="90" width="212" height="42" rx="20" fill="#1d6fa5"/>
+  <path d="M254 190h132M320 124v132" stroke="#f4a261" stroke-width="22" stroke-linecap="round"/>
+  <text x="320" y="344" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#0d3b66">Repair Kits</text>
+</svg>

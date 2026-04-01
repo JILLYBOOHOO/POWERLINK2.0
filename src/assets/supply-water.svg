@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#e8f4fb"/>
+  <rect x="208" y="86" width="224" height="220" rx="40" fill="#0d3b66"/>
+  <rect x="238" y="118" width="164" height="122" rx="20" fill="#d7edf8"/>
+  <path d="M320 134c28 36 48 58 48 86 0 26-21 46-48 46s-48-20-48-46c0-28 20-50 48-86z" fill="#2f7ea3"/>
+  <text x="320" y="352" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#0d3b66">Water Systems</text>
+</svg>

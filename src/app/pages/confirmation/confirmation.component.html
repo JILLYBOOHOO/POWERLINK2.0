@@ -1,0 +1,114 @@
+<section class="confirmation-page" *ngIf="isValidConfirmation">
+  <div class="container confirmation-card">
+    <div class="confirmation-brand">
+      <img src="assets/powerlink-icon.svg" alt="PowerLink logo" width="42" height="42">
+      <span>PowerLink Plumbing</span>
+    </div>
+    <p class="confirmation-eyebrow">Order Confirmed</p>
+    <h1>Thanks, {{ customerName }}.</h1>
+    <p class="confirmation-text">
+      Your payment for <strong>{{ orderName }}</strong> was submitted successfully.
+    </p>
+
+    <div class="confirmation-summary">
+      <div>
+        <span>Order reference</span>
+        <strong>{{ orderReference }}</strong>
+      </div>
+      <div>
+        <span>Total paid</span>
+        <strong>${{ total }}</strong>
+      </div>
+      <div>
+        <span>Fulfillment</span>
+        <strong>{{ fulfillment }}</strong>
+      </div>
+    </div>
+
+    <section class="invoice-card">
+      <div class="invoice-header">
+        <div>
+          <p class="invoice-kicker">PowerLink Invoice</p>
+          <h2>{{ orderName }}</h2>
+        </div>
+        <div class="invoice-status">Paid</div>
+      </div>
+
+      <div class="receipt-layout">
+        <section class="receipt-panel">
+          <h2>Customer</h2>
+          <div class="receipt-row">
+            <span>Name</span>
+            <strong>{{ customerName }}</strong>
+          </div>
+          <div class="receipt-row" *ngIf="customerEmail">
+            <span>Email</span>
+            <strong>{{ customerEmail }}</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Reference</span>
+            <strong>{{ orderReference }}</strong>
+          </div>
+          <div class="receipt-row">
+            <span>Fulfillment</span>
+            <strong>{{ fulfillment }}</strong>
+          </div>
+        </section>
+
+        <section class="receipt-panel">
+          <h2>{{ isServiceBooking ? 'Service Details' : 'Delivery Details' }}</h2>
+          <div class="receipt-row" *ngIf="providerName">
+            <span>Assigned plumber</span>
+            <strong>{{ providerName }}</strong>
+          </div>
+          <div class="receipt-row" *ngIf="serviceSpecialty">
+            <span>Service type</span>
+            <strong>{{ serviceSpecialty }}</strong>
+          </div>
+          <div class="receipt-row" *ngIf="serviceDate">
+            <span>Service date</span>
+            <strong>{{ serviceDate }}</strong>
+          </div>
+          <div class="receipt-row" *ngIf="serviceTime">
+            <span>Service time</span>
+            <strong>{{ serviceTime }}</strong>
+          </div>
+          <div class="receipt-row" *ngIf="hasAddress">
+            <span>Location</span>
+            <strong>{{ address }}, {{ city }}, {{ country }}</strong>
+          </div>
+          <div class="receipt-row" *ngIf="!hasAddress">
+            <span>Status</span>
+            <strong>Pickup from Kingston supply counter</strong>
+          </div>
+        </section>
+      </div>
+
+      <section class="receipt-panel invoice-total-panel">
+        <h2>Billing Summary</h2>
+        <div class="receipt-row">
+          <span>Order</span>
+          <strong>{{ orderName }}</strong>
+        </div>
+        <div class="receipt-row" *ngIf="serviceNotes">
+          <span>Customer notes</span>
+          <strong>{{ serviceNotes }}</strong>
+        </div>
+        <div class="receipt-row total-row">
+          <span>Total paid</span>
+          <strong>${{ total }}</strong>
+        </div>
+      </section>
+    </section>
+
+    <p class="confirmation-note">
+      We've recorded your order and the team will follow up with the next steps shortly.
+    </p>
+
+    <div class="confirmation-actions">
+      <button type="button" class="secondary-button" (click)="printReceipt()">Print Receipt</button>
+      <button type="button" routerLink="/supplies">Continue Shopping</button>
+      <button type="button" class="secondary-button" routerLink="/plumbers">Book a Plumber</button>
+    </div>
+  </div>
+</section>

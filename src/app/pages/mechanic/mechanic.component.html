@@ -1,0 +1,94 @@
+<div class="mechanic-page">
+  <section class="mechanic-hero">
+    <div class="container">
+      <p class="hero-tag">Book a Professional</p>
+      <h1>Choose the plumber that matches your job.</h1>
+      <p>Filter by location and service type, compare experience, and book the plumber you want.</p>
+    </div>
+  </section>
+
+  <section class="mechanic-content">
+    <div class="container">
+      <div class="plumber-overview">
+        <div class="overview-card">
+          <span>Verified professionals</span>
+          <strong>{{ mechanic.length }}</strong>
+        </div>
+        <div class="overview-card">
+          <span>Average rating</span>
+          <strong>4.8 / 5</strong>
+        </div>
+        <div class="overview-card">
+          <span>Typical response</span>
+          <strong>Under 20 mins</strong>
+        </div>
+      </div>
+
+      <div class="filter-grid">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search plumber by name or specialty..."
+          [(ngModel)]="searchText">
+
+        <select class="form-control" [(ngModel)]="selectedLocation">
+          <option value="">All Locations</option>
+          <option>Kingston</option>
+          <option>Montego Bay</option>
+          <option>Spanish Town</option>
+        </select>
+      </div>
+
+      <div class="mechanic-grid">
+        <article class="mechanic-card" *ngFor="let mechanic of filteredMechanic()">
+          <img [src]="mechanic.image" alt="Plumber profile" loading="lazy" width="200" height="200">
+
+          <div class="mechanic-card-content">
+            <div class="profile-badges">
+              <span class="badge-chip">Verified</span>
+              <span class="badge-chip neutral">{{ mechanic.responseTime }}</span>
+            </div>
+            <div class="card-topline">
+              <p class="specialty">{{ mechanic.specialty }}</p>
+              <span class="availability">{{ mechanic.availability }}</span>
+            </div>
+            <h2>{{ mechanic.name }}</h2>
+            <p>Location: {{ mechanic.location }}</p>
+            <p>Experience: {{ mechanic.experience }} years</p>
+            <div class="review-row">
+              <p class="rating">Rating: {{ mechanic.rating }} / 5</p>
+              <span>{{ mechanic.reviewCount }} reviews</span>
+            </div>
+            <p class="price">Service fee: ${{ mechanic.serviceFee }}</p>
+            <p class="mini-quote">Best for {{ mechanic.specialty.toLowerCase() }} and scheduled home service calls.</p>
+
+            <div class="plumber-actions">
+              <button type="button" class="secondary-button" [routerLink]="['/plumbers', mechanic.slug]">
+                View Profile
+              </button>
+              <button type="button" (click)="chooseMechanic(mechanic)">
+                Choose This Plumber
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="page-feedback" *ngIf="selectedMechanicMessage">
+        {{ selectedMechanicMessage }}
+      </div>
+    </div>
+  </section>
+
+  <section class="signup-section">
+    <div class="container">
+      <div class="signup-card">
+        <h3>Are You a Professional Plumber?</h3>
+        <p>Join PowerLink and connect with customers looking for trusted plumbing work.</p>
+        <button type="button" class="submit-button" routerLink="/plumber-register">
+          Register as Plumber
+        </button>
+      </div>
+    </div>
+  </section>
+</div>

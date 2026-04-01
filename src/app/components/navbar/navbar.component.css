@@ -1,0 +1,172 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 18px 20px;
+  background: rgba(247, 251, 255, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #dbe7f0;
+}
+
+.navbar-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-default);
+  text-decoration: none;
+}
+
+.logo img {
+  width: 42px;
+  height: 42px;
+  display: block;
+}
+
+.brand-block {
+  display: grid;
+  gap: 2px;
+}
+
+.brand-block strong {
+  color: #102a43;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.brand-block small {
+  color: #52667a;
+  font-size: 0.78rem;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar a {
+  color: #52667a;
+  text-decoration: none;
+}
+
+.navbar li a {
+  display: inline-block;
+  padding: 10px 0;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+  font-weight: 600;
+}
+
+.nav-link-with-badge {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+}
+
+.cart-badge {
+  min-width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: #0d3b66;
+  color: var(--text-on-dark);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.navbar li a:hover,
+.navbar li a.active-link {
+  color: #102a43;
+  border-color: #1d6fa5;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.login-btn,
+.signup-btn,
+.cart-button,
+.utility-btn {
+  border: none;
+  padding: 10px 16px;
+  color: var(--text-on-dark);
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.user-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #eef5fb;
+  color: #0d3b66;
+  font-weight: 700;
+}
+
+.login-btn {
+  background: transparent;
+  border: 1px solid #cad9e6;
+  color: #102a43;
+}
+
+.signup-btn,
+.cart-button {
+  background: #0d3b66;
+}
+
+.utility-btn {
+  background: #eef5fb;
+  color: #0d3b66;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 16px;
+    align-items: stretch;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .logo {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .login-btn,
+  .signup-btn,
+  .cart-button,
+  .utility-btn {
+    flex: 1 1 140px;
+  }
+}

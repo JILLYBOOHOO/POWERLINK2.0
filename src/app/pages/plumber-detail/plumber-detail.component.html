@@ -1,0 +1,93 @@
+<section class="plumber-detail-page" *ngIf="plumber; else missingPlumber">
+  <div class="container plumber-detail-layout">
+    <div class="detail-media-card plumber-media-card">
+      <div class="detail-media-badge">Verified Plumber</div>
+      <div class="detail-image-stage plumber-image-stage">
+        <img class="detail-image plumber-detail-image" [src]="plumber.image" [alt]="plumber.name" fetchpriority="high" width="400" height="400">
+      </div>
+      <div class="detail-highlight-row">
+        <div class="detail-highlight-chip" *ngFor="let highlight of profileHighlights">
+          {{ highlight }}
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-card">
+      <div class="profile-badges">
+        <span class="badge-chip">Verified Pro</span>
+        <span class="badge-chip neutral">{{ plumber.responseTime }}</span>
+      </div>
+      <p class="item-category">{{ plumber.specialty }}</p>
+      <h1>{{ plumber.name }}</h1>
+      <p class="detail-description">{{ plumber.bio }}</p>
+
+      <div class="detail-meta">
+        <div>
+          <span>Location</span>
+          <strong>{{ plumber.location }}</strong>
+        </div>
+        <div>
+          <span>Experience</span>
+          <strong>{{ plumber.experience }} years</strong>
+        </div>
+        <div>
+          <span>Rating</span>
+          <strong>{{ plumber.rating }} / 5</strong>
+        </div>
+        <div>
+          <span>Reviews</span>
+          <strong>{{ plumber.reviewCount }}</strong>
+        </div>
+      </div>
+
+      <p class="detail-price">${{ plumber.serviceFee }}<span> service fee</span></p>
+      <p class="detail-stock">{{ plumber.availability }}</p>
+
+      <ul class="detail-features">
+        <li *ngFor="let service of plumber.services">{{ service }}</li>
+      </ul>
+
+      <div class="detail-actions">
+        <button type="button" (click)="bookNow()">Book This Plumber</button>
+        <button type="button" class="secondary-button" routerLink="/plumbers">Back to Plumbers</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container related-section">
+    <div class="review-layout">
+      <section class="review-panel">
+        <h2>Customer Reviews</h2>
+        <article class="review-card" *ngFor="let review of plumber.reviews">
+          <div class="review-header">
+            <strong>{{ review.author }}</strong>
+            <span>{{ review.rating }} / 5</span>
+          </div>
+          <p>{{ review.comment }}</p>
+        </article>
+      </section>
+
+      <section class="review-panel" *ngIf="relatedPlumbers.length > 0">
+        <h2>Related Plumbers</h2>
+        <article class="related-plumber" *ngFor="let item of relatedPlumbers">
+          <img [src]="item.image" [alt]="item.name" loading="lazy" width="80" height="80">
+          <div>
+            <strong>{{ item.name }}</strong>
+            <p>{{ item.specialty }}</p>
+          </div>
+          <button type="button" (click)="viewProfile(item.slug)">View</button>
+        </article>
+      </section>
+    </div>
+  </div>
+</section>
+
+<ng-template #missingPlumber>
+  <section class="supply-detail-empty">
+    <div class="container">
+      <h1>Plumber not found.</h1>
+      <p>The profile you requested does not exist.</p>
+      <button type="button" routerLink="/plumbers">Back to Plumbers</button>
+    </div>
+  </section>
+</ng-template>

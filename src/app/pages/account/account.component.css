@@ -1,0 +1,83 @@
+.account-page {
+  padding: 56px 20px 72px;
+}
+
+.account-hero-card,
+.account-list-card,
+.account-state-card {
+  background: white;
+  border-radius: 24px;
+  padding: 28px;
+  border: 1px solid #dce8f1;
+  box-shadow: 0 18px 36px rgba(13, 59, 102, 0.08);
+}
+
+.account-hero-card {
+  margin-bottom: 20px;
+}
+
+.account-list-card h3,
+.account-hero-card h1 {
+  margin-top: 0;
+}
+
+.account-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 22px 0 18px;
+}
+
+.account-overview-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: linear-gradient(180deg, #f8fbff, #eef5fc);
+}
+
+.account-overview-card span {
+  display: block;
+  margin-bottom: 8px;
+  color: #52667a;
+  font-size: 0.88rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.account-overview-card strong {
+  color: #0d3b66;
+  font-size: 1.2rem;
+}
+
+.account-list-header {
+  margin-bottom: 12px;
+}
+
+.account-list-header h2 {
+  margin: 0 0 6px;
+  color: #102a43;
+}
+
+.account-list-header p {
+  margin: 0;
+  color: #52667a;
+}
+
+.account-order-row {
+  display: grid;
+  grid-template-columns: 1.8fr repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  padding: 18px 0;
+  border-top: 1px solid #e7eef5;
+}
+
+.account-order-row:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+@media (max-width: 900px) {
+  .account-overview-grid,
+  .account-order-row {
+    grid-template-columns: 1fr;
+  }
+}

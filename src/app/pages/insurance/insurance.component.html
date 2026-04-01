@@ -1,0 +1,171 @@
+<section class="insurance-hero">
+  <div class="container hero-layout">
+    <div>
+      <p class="eyebrow">Complete Plumbing Store</p>
+      <h1>Shop plumbing supplies for every repair, install, and maintenance job.</h1>
+      <p class="hero-text">
+        Browse pipes, fittings, fixtures, drain tools, repair kits, and water system hardware from one organized catalog.
+      </p>
+    </div>
+
+    <div class="hero-summary">
+      <div>
+        <strong>{{ supplies.length }}+</strong>
+        <span>core supply items</span>
+      </div>
+      <div>
+        <strong>Same Day</strong>
+        <span>local delivery support</span>
+      </div>
+      <div>
+        <strong>Trade Ready</strong>
+        <span>for homeowners and contractors</span>
+      </div>
+    </div>
+
+    <div class="store-hero-visual">
+      <img src="assets/store-plumbing-hero.svg" alt="PowerLink plumbing supply store illustration" width="960" height="760" fetchpriority="high">
+    </div>
+  </div>
+</section>
+
+<section class="insurance-content">
+  <div class="container">
+    <div class="store-featured-strip">
+      <article class="featured-supply-card" *ngFor="let item of featuredSupplies">
+        <img [src]="item.image" [alt]="item.name" loading="lazy" width="120" height="120">
+        <div>
+          <p class="product-type">{{ item.badge || item.category }}</p>
+          <h3>{{ item.name }}</h3>
+          <p>{{ item.description }}</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="section-heading">
+      <h2>Plumbing Supply Catalog</h2>
+      <p>Search the store and filter by category to find the exact plumbing supplies you need.</p>
+    </div>
+
+    <div class="store-toolbar">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Search by product, category, or use case..."
+        [(ngModel)]="searchTerm">
+
+      <div class="category-row">
+        <button
+          type="button"
+          class="category-chip"
+          *ngFor="let category of categories"
+          [class.active-chip]="selectedCategory === category"
+          (click)="setCategory(category)">
+          {{ category }}
+        </button>
+      </div>
+    </div>
+
+    <div class="catalog-meta">
+      <p>{{ filteredSupplies.length }} items available</p>
+      <p>Need help choosing? <a routerLink="/contact">Talk to our supply team</a></p>
+    </div>
+
+    <div class="sync-banner" *ngIf="cartService.syncMessage">
+      <span class="sync-dot" [class.offline-dot]="cartService.syncState === 'offline'" [class.syncing-dot]="cartService.syncState === 'syncing'"></span>
+      {{ cartService.syncMessage }}
+    </div>
+
+    <div class="store-layout">
+      <div>
+        <div class="catalog-feedback" *ngIf="feedbackMessage">
+          {{ feedbackMessage }}
+        </div>
+
+        <div class="plan-grid">
+          <article class="plan-card" *ngFor="let item of filteredSupplies">
+            <div class="product-media" (click)="viewProduct(item)">
+              <img class="product-image" [src]="item.image" [alt]="item.name" loading="lazy" width="200" height="200">
+            </div>
+
+            <div class="card-header">
+              <p class="product-type">{{ item.category }}</p>
+              <span class="badge" *ngIf="item.badge">{{ item.badge }}</span>
+            </div>
+
+            <h3 class="product-title" (click)="viewProduct(item)">{{ item.name }}</h3>
+            <p class="description">{{ item.description }}</p>
+            <p class="price">${{ item.price }}<span> per {{ item.unit }}</span></p>
+            <p class="stock">{{ item.stock }}</p>
+
+            <ul>
+              <li *ngFor="let feature of item.features">{{ feature }}</li>
+            </ul>
+
+            <div class="store-quantity-row">
+              <span class="product-type">Quantity</span>
+              <div class="store-quantity-control">
+                <button type="button" class="quantity-button" (click)="updateQuantity(item.slug, -1)">-</button>
+                <span>{{ getQuantity(item.slug) }}</span>
+                <button type="button" class="quantity-button" (click)="updateQuantity(item.slug, 1)">+</button>
+              </div>
+            </div>
+
+            <div class="store-actions">
+              <button type="button" class="secondary-action" (click)="viewProduct(item)">View Details</button>
+              <button type="button" class="secondary-action" (click)="addToCart(item)">Add to Cart</button>
+              <button type="button" (click)="buySupply(item)">Buy Now</button>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <aside class="cart-panel">
+        <div class="cart-panel-card">
+          <p class="product-type">Cart</p>
+          <h3>Your Supply Order</h3>
+          <p class="description">Add multiple plumbing supplies, then check out once.</p>
+
+          <div class="cart-line" *ngFor="let item of cartService.cartItems">
+            <div>
+              <strong>{{ item.name }}</strong>
+              <span>{{ item.quantity }} x ${{ item.price }}</span>
+            </div>
+            <div class="cart-controls">
+              <button type="button" class="quantity-button" (click)="cartService.updateQuantity(item.name, item.quantity - 1)">-</button>
+              <button type="button" class="quantity-button" (click)="cartService.updateQuantity(item.name, item.quantity + 1)">+</button>
+              <button type="button" class="link-button" (click)="cartService.removeItem(item.name)">Remove</button>
+            </div>
+          </div>
+
+          <p class="description" *ngIf="cartService.cartItems.length === 0">
+            Your cart is empty.
+          </p>
+
+          <div class="cart-total">
+            <span>{{ cartService.totalItems }} items</span>
+            <strong>${{ cartService.subtotal }}</strong>
+          </div>
+
+          <button
+            type="button"
+            class="checkout-button"
+            [disabled]="cartService.cartItems.length === 0"
+            routerLink="/cart">
+            Checkout Cart
+          </button>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container cta-card">
+    <div>
+      <h3>Need installation too?</h3>
+      <p>Book a plumber after choosing your supplies, or let a professional advise on the right parts.</p>
+    </div>
+    <button type="button" routerLink="/plumbers">Browse Plumbers</button>
+  </div>
+</section>

@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "id": "29204f0b9751ac10",
+      "fullName": "Cart Test",
+      "email": "carttest1774924992@example.com",
+      "phone": "5551234567",
+      "password": "Password123",
+      "cart": [
+        {
+          "price": 68,
+          "quantity": 2,
+          "name": "PVC Pipe Bundle",
+          "unit": "bundle",
+          "category": "Pipes"
+        }
+      ],
+      "createdAt": "2026-03-31T02:43:12.320Z"
+    },
+    {
+      "id": "6e4fc2ad23c62ea9",
+      "fullName": "rojwayne codner",
+      "email": "rojwayne1@gmail.com",
+      "phone": "8768564025",
+      "password": "Password1234",
+      "cart": [],
+      "createdAt": "2026-03-31T03:00:05.648Z"
+    }
+  ],
+  "orders": [],
+  "registrations": [],
+  "messages": [
+    {
+      "id": "c8a72826dc51e824",
+      "fullName": "Contact Test",
+      "email": "contacttest@example.com",
+      "phone": "8765551212",
+      "service": "Emergency Plumbing",
+      "message": "Need urgent leak assistance.",
+      "submittedAt": "2026-03-31T03:35:13.143Z"
+    }
+  ]
+}

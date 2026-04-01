@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 420">
+  <rect width="640" height="420" fill="#eef7fc"/>
+  <rect x="152" y="118" width="128" height="128" rx="26" fill="#0d3b66"/>
+  <rect x="360" y="118" width="128" height="128" rx="26" fill="#2f7ea3"/>
+  <circle cx="216" cy="182" r="34" fill="#f4a261"/>
+  <circle cx="424" cy="182" r="34" fill="#f4a261"/>
+  <rect x="255" y="164" width="130" height="36" rx="18" fill="#123c6b"/>
+  <text x="320" y="344" text-anchor="middle" font-family="Arial, sans-serif" font-size="34" fill="#0d3b66">Fittings</text>
+</svg>

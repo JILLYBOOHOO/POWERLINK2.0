@@ -11,6 +11,21 @@
   --text-on-dark: #ffffff;
 }
 
+app-navbar {
+  display: block;
+  min-height: 80px;
+}
+
+main {
+  display: block;
+  min-height: 500px;
+}
+
+app-footer {
+  display: block;
+  min-height: 120px;
+}
+
 .hero {
   display: grid;
   grid-template-columns: 1.4fr 0.9fr;
@@ -239,27 +254,29 @@
 }
 
 .home-showcase {
-  padding: 28px 20px 0;
+  padding: 0 20px 0;
 }
 
 .home-showcase-grid {
   display: grid;
   grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
   gap: 28px;
-  padding: 40px;
+  padding: 12px 40px 32px;
   border-radius: 28px;
   background:
     linear-gradient(135deg, #f7fbff, #edf4fa 55%, #ffffff);
   border: 1px solid #dbe8f1;
   box-shadow: 0 18px 36px rgba(13, 59, 102, 0.08);
+  align-items: start;
+  min-height: 520px;
 }
 
 .home-showcase-copy {
-  padding: 16px 6px 16px 4px;
+  padding: 0 6px 16px 4px;
 }
 
 .home-kicker {
-  margin: 0 0 14px;
+  margin: 0 0 8px;
   text-transform: uppercase;
   letter-spacing: 0.14em;
   color: #1d6fa5;
@@ -323,6 +340,7 @@
   border-radius: 16px;
   background: #fff;
   border: 1px solid #e2edf5;
+  min-height: 104px;
 }
 
 .home-metrics strong {
@@ -339,7 +357,7 @@
 .home-showcase-visual {
   display: grid;
   gap: 18px;
-  align-content: center;
+  align-content: start;
 }
 
 .home-photo-card {
@@ -349,10 +367,14 @@
   background: linear-gradient(180deg, #ffffff, #f4f8fc);
   border: 1px solid #dbe7f0;
   box-shadow: 0 18px 36px rgba(13, 59, 102, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.home-photo-card img {
+.home-photo-card svg {
   width: 100%;
+  height: auto;
   display: block;
   border-radius: 18px;
 }
@@ -363,6 +385,7 @@
   background: #102a43;
   color: #fff;
   box-shadow: 0 18px 36px rgba(16, 42, 67, 0.16);
+  min-height: 160px;
 }
 
 .home-card-label {
@@ -575,12 +598,14 @@ body {
   color: var(--text-default);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
   padding: 0 24px;
+  min-height: 1px;
 }
 
 h1,

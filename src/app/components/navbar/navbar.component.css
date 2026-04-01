@@ -6,6 +6,8 @@
   background: rgba(247, 251, 255, 0.94);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid #dbe7f0;
+  min-height: 80px;
+  contain: layout;
 }
 
 .navbar-inner {

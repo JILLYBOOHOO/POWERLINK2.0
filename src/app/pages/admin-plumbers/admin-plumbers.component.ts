@@ -18,6 +18,12 @@ export class AdminPlumbersComponent implements OnInit {
   }
 
   get pendingCount(): number {
-    return this.adminService.registrations.filter((item) => item.status !== 'Approved').length;
+    return this.adminService.registrations.filter((item) => item.status === 'Pending Verification').length;
+  }
+
+  async updateStatus(item: any, status: string) {
+    if (confirm(`Are you sure you want to ${status.toLowerCase()} ${item.name}'s registration?`)) {
+      await this.adminService.updateRegistrationStatus(item, status);
+    }
   }
 }

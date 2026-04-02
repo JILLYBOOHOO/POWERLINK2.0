@@ -72,12 +72,42 @@
 
 .admin-order-row {
   display: grid;
-  grid-template-columns: 1.8fr repeat(4, minmax(0, 1fr));
+  grid-template-columns: 1.8fr repeat(4, minmax(0, 1fr)) auto;
   gap: 16px;
   align-items: center;
   padding: 18px 0;
   border-top: 1px solid #e6edf5;
 }
+
+.admin-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.approve-btn, .deny-btn {
+  padding: 10px 14px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.approve-btn {
+  background: #1f7a4c;
+  color: white;
+}
+
+.approve-btn:hover { background: #18633c; }
+
+.deny-btn {
+  background: white;
+  border: 1px solid #ccd6e0;
+  color: #c1121f;
+}
+
+.deny-btn:hover { background: #fdf2f2; border-color: #c1121f; }
 
 .admin-order-row h3 {
   margin: 4px 0;

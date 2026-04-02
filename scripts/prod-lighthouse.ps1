@@ -11,6 +11,6 @@ Start-Process node -ArgumentList "backend/server.js" -WindowStyle Hidden
 
 Write-Host "Step 3: Serving Optimized Production App..." -ForegroundColor Cyan
 # Install http-server if not present and serve with compression
-npx -y http-server dist/power-link -p 8080 -g --cors -c31536000
+npx -y http-server dist/power-link -p 8080 -g --cors -c-1 --proxy http://localhost:8080?
 
 Write-Host "READY: Run Lighthouse against http://localhost:8080" -ForegroundColor Green

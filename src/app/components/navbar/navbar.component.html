@@ -47,14 +47,14 @@
       <span class="user-chip" *ngIf="authService.isLoggedIn()">
         {{ authService.getCurrentUser()?.fullName }}
       </span>
-      <button routerLink="/account" class="login-btn" *ngIf="authService.isLoggedIn()">My Account</button>
-      <button routerLink="/login" class="login-btn" *ngIf="!authService.isLoggedIn()">Login</button>
-      <button routerLink="/signup" class="signup-btn" *ngIf="!authService.isLoggedIn()">Sign Up</button>
-      <button routerLink="/plumber-register" class="utility-btn">Register Plumber</button>
-      <button routerLink="/admin/login" class="utility-btn" *ngIf="!authService.isAdmin()">Admin Login</button>
-      <button routerLink="/admin/orders" class="utility-btn" *ngIf="authService.isAdmin()">Admin Panel</button>
-      <button type="button" class="login-btn" *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</button>
-      <button routerLink="/cart" class="cart-button" *ngIf="cartService.totalItems > 0">
+      <button type="button" routerLink="/account" class="login-btn" *ngIf="authService.isLoggedIn()">My Account</button>
+      <button type="button" routerLink="/login" class="login-btn" *ngIf="!authService.isLoggedIn()">Login</button>
+      <button type="button" routerLink="/signup" class="signup-btn" *ngIf="!authService.isLoggedIn()">Sign Up</button>
+      <button type="button" routerLink="/plumber-register" class="utility-btn">Register Plumber</button>
+      <button type="button" routerLink="/admin/login" class="utility-btn" *ngIf="!authService.isAdmin()">Admin Login</button>
+      <button type="button" routerLink="/admin/orders" class="utility-btn" *ngIf="authService.isAdmin()">Admin Panel</button>
+      <button type="button" class="login-btn" *ngIf="authService.isLoggedIn() || authService.isAdmin()" (click)="logout()">Logout</button>
+      <button type="button" routerLink="/cart" class="cart-button" *ngIf="cartService.totalItems > 0">
         Cart ({{ cartService.totalItems }})
       </button>
     </div>

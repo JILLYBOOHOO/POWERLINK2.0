@@ -28,8 +28,8 @@
     </div>
 
     <form [formGroup]="paymentForm" (ngSubmit)="submitPayment()">
-      <input type="text" placeholder="Full Name" formControlName="fullName">
-      <input type="email" placeholder="Email Address" formControlName="email">
+      <input type="text" placeholder="Full Name" formControlName="fullName" autocomplete="name" aria-label="Full Name">
+      <input type="email" placeholder="Email Address" formControlName="email" autocomplete="email" aria-label="Email Address">
 
       <div class="inline-section-heading">
         <h3>Payment method</h3>
@@ -42,11 +42,11 @@
         <div class="method">PayPal</div>
       </div>
 
-      <input type="text" placeholder="Card Number" formControlName="cardNumber">
+      <input type="text" placeholder="Card Number" formControlName="cardNumber" autocomplete="cc-number" aria-label="Credit Card Number">
 
       <div class="row">
-        <input type="text" placeholder="MM/YY" formControlName="expiry">
-        <input type="text" placeholder="CVV" formControlName="cvv">
+        <input type="text" placeholder="MM/YY" formControlName="expiry" autocomplete="cc-exp" aria-label="Expiration Date">
+        <input type="text" placeholder="CVV" formControlName="cvv" autocomplete="cc-csc" aria-label="Security Code CVV">
       </div>
 
       <div class="booking-block" *ngIf="isPlumberBooking">
@@ -112,11 +112,12 @@
       <input
         type="text"
         [placeholder]="fulfillmentMode === 'pickup' ? 'Pickup location' : 'Street Address'"
-        formControlName="address">
+        formControlName="address" autocomplete="street-address"
+        [attr.aria-label]="fulfillmentMode === 'pickup' ? 'Pickup location' : 'Street Address'">
 
       <div class="row">
-        <input type="text" placeholder="City" formControlName="city">
-        <input type="text" placeholder="Country" formControlName="country">
+        <input type="text" placeholder="City" formControlName="city" autocomplete="address-level2" aria-label="City">
+        <input type="text" placeholder="Country" formControlName="country" autocomplete="country-name" aria-label="Country">
       </div>
 
       <div class="checkout-note" *ngIf="isSupplyCheckout">

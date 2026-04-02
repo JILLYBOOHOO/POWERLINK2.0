@@ -14,7 +14,7 @@ export class AdminOrdersComponent implements OnInit {
   }
 
   get totalRevenue(): number {
-    return this.adminService.orders.reduce((sum, order) => sum + order.total, 0);
+    return this.adminService.orders.reduce((sum, order) => sum + Number(order.total), 0);
   }
 
   get activeBookings(): number {

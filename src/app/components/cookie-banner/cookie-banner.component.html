@@ -1,0 +1,16 @@
+<div class="cookie-banner" *ngIf="!hasConsented">
+  <div class="cookie-content">
+    <h3>Cookie & Privacy Consent</h3>
+    <p>
+      We use cookies to ensure you get the best functional experience on our site, including remembering your login session and cart. 
+      For more details, see our <a routerLink="/privacy-policy">Privacy Policy</a>.
+    </p>
+    <label class="opt-out">
+      <input type="checkbox" [(ngModel)]="optOutMarketing">
+      Opt out of marketing emails and analytics tracking.
+    </label>
+  </div>
+  <div class="cookie-actions">
+    <button class="accept-btn" (click)="accept()">Accept & Continue</button>
+  </div>
+</div>

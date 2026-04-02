@@ -1,0 +1,59 @@
+.privacy-hero {
+  padding: 64px 20px;
+  background: linear-gradient(135deg, #0d3b66, #2f7ea3);
+  color: white;
+  text-align: center;
+}
+
+.privacy-hero h1 {
+  margin: 0 0 8px;
+  font-size: 2.5rem;
+}
+
+.privacy-hero p {
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+
+.privacy-content {
+  padding: 48px 20px;
+  background: #f8fbff;
+  min-height: 400px;
+}
+
+.content-card {
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 12px 36px rgba(13, 59, 102, 0.08);
+  color: #22415d;
+  line-height: 1.6;
+}
+
+.content-card h2 {
+  margin: 32px 0 16px;
+  color: #0d3b66;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #eef2f6;
+  padding-bottom: 8px;
+}
+
+.content-card h2:first-of-type {
+  margin-top: 0;
+}
+
+.content-card p {
+  margin-bottom: 16px;
+  font-size: 1.05rem;
+}
+
+.content-card ul {
+  margin-bottom: 24px;
+  padding-left: 24px;
+}
+
+.content-card li {
+  margin-bottom: 8px;
+}

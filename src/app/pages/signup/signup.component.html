@@ -1,85 +1,112 @@
 <div class="signup-wrapper">
   <div class="signup-card">
-    <div class="signup-brand">
-      <img src="assets/powerlink-icon.svg" alt="PowerLink logo" width="42" height="42">
-      <span>PowerLink Plumbing</span>
+    <!-- Decorative side panel -->
+    <div class="signup-side">
+      <h3>Join PowerLink Plumbing</h3>
+      <p>Create your free account and get access to our full suite of plumbing services.</p>
+      <ul class="signup-side-features">
+        <li>
+          <span class="side-icon">🛒</span>
+          <span>Order supplies with fast delivery</span>
+        </li>
+        <li>
+          <span class="side-icon">📅</span>
+          <span>Schedule plumber visits online</span>
+        </li>
+        <li>
+          <span class="side-icon">📊</span>
+          <span>Track all orders and invoices</span>
+        </li>
+        <li>
+          <span class="side-icon">🔔</span>
+          <span>Get notified on service updates</span>
+        </li>
+      </ul>
     </div>
-    <p class="signup-tag">Customer Account</p>
-    <h2>Create Your Account</h2>
-    <p class="signup-intro">Save orders, track plumber bookings, and check out faster next time.</p>
 
-    <form [formGroup]="signupForm" (ngSubmit)="submit()">
-      <div class="input-group">
-        <label for="fullName">Full Name</label>
-        <input id="fullName" type="text" placeholder="Full Name" formControlName="fullName">
+    <!-- Form section -->
+    <div class="signup-form-section">
+      <div class="signup-brand">
+        <img src="assets/powerlink-icon.svg" alt="PowerLink logo" width="42" height="42">
+        <span>PowerLink Plumbing</span>
       </div>
+      <p class="signup-tag">Customer Account</p>
+      <h2>Create Your Account</h2>
+      <p class="signup-intro">Save orders, track plumber bookings, and check out faster next time.</p>
 
-      <div class="error" *ngIf="signupForm.get('fullName')?.touched && signupForm.get('fullName')?.invalid">
-        Enter your full name.
-      </div>
+      <form [formGroup]="signupForm" (ngSubmit)="submit()">
+        <div class="input-group">
+          <label for="fullName">Full Name</label>
+          <input id="fullName" type="text" placeholder="Full Name" formControlName="fullName" autocomplete="name">
+        </div>
 
-      <div class="input-group">
-        <label for="email">Email Address</label>
-        <input id="email" type="email" placeholder="Email Address" formControlName="email">
-      </div>
+        <div class="error" *ngIf="signupForm.get('fullName')?.touched && signupForm.get('fullName')?.invalid">
+          Enter your full name.
+        </div>
 
-      <div class="error" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
-        Enter a valid email address.
-      </div>
+        <div class="input-group">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" placeholder="Email Address" formControlName="email" autocomplete="email">
+        </div>
 
-      <div class="input-group">
-        <label for="phone">Phone Number</label>
-        <input id="phone" type="text" placeholder="Phone Number" formControlName="phone">
-      </div>
-      <div class="error" *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.invalid">
-        Enter a valid phone number.
-      </div>
+        <div class="error" *ngIf="signupForm.get('email')?.touched && signupForm.get('email')?.invalid">
+          Enter a valid email address.
+        </div>
 
-      <div class="input-group">
-        <label for="password">Password</label>
-        <input id="password" type="password" placeholder="Password" formControlName="password">
-      </div>
+        <div class="input-group">
+          <label for="phone">Phone Number</label>
+          <input id="phone" type="text" placeholder="Phone Number" formControlName="phone" autocomplete="tel">
+        </div>
+        <div class="error" *ngIf="signupForm.get('phone')?.touched && signupForm.get('phone')?.invalid">
+          Enter a valid phone number.
+        </div>
 
-      <div class="strength" [class.strong-meter]="passwordStrength === 'Strong'">
-        Strength:
-        <span [ngClass]="passwordStrength.toLowerCase()">
-          {{ passwordStrength }}
-        </span>
-      </div>
-      <div class="helper-text">Use at least 8 characters for a stronger account password.</div>
+        <div class="input-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password" formControlName="password" autocomplete="new-password">
+        </div>
 
-      <div class="input-group">
-        <label for="confirmPassword">Confirm Password</label>
-        <input id="confirmPassword" type="password" placeholder="Confirm Password" formControlName="confirmPassword">
-      </div>
-      <div class="error" *ngIf="signupForm.get('confirmPassword')?.touched && !passwordsMatch">
-        Passwords must match.
-      </div>
+        <div class="strength" [class.strong-meter]="passwordStrength === 'Strong'">
+          Strength:
+          <span [ngClass]="passwordStrength.toLowerCase()">
+            {{ passwordStrength }}
+          </span>
+        </div>
+        <div class="helper-text">Use at least 8 characters for a stronger account password.</div>
 
-      <label class="terms-check">
-        <input type="checkbox" formControlName="agreeToTerms">
-        <span>I agree to the account terms and order communications.</span>
-      </label>
-      <div class="error" *ngIf="signupForm.get('agreeToTerms')?.touched && signupForm.get('agreeToTerms')?.invalid">
-        You need to accept the terms to continue.
-      </div>
+        <div class="input-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input id="confirmPassword" type="password" placeholder="Confirm Password" formControlName="confirmPassword" autocomplete="new-password">
+        </div>
+        <div class="error" *ngIf="signupForm.get('confirmPassword')?.touched && !passwordsMatch">
+          Passwords must match.
+        </div>
 
-      <button type="submit" [disabled]="!canSubmit">
-        Create Account
-      </button>
+        <label class="terms-check">
+          <input type="checkbox" formControlName="agreeToTerms">
+          <span>I agree to the account terms and order communications.</span>
+        </label>
+        <div class="error" *ngIf="signupForm.get('agreeToTerms')?.touched && signupForm.get('agreeToTerms')?.invalid">
+          You need to accept the terms to continue.
+        </div>
 
-      <div class="login-link">
-        Already have an account?
-        <a routerLink="/login">Login</a>
-      </div>
+        <button type="submit" [disabled]="!canSubmit">
+          Create Account
+        </button>
 
-      <div class="form-feedback error" *ngIf="formError">
-        {{ formError }}
-      </div>
+        <div class="login-link">
+          Already have an account?
+          <a routerLink="/login">Login</a>
+        </div>
 
-      <div class="form-feedback success" *ngIf="formMessage">
-        {{ formMessage }}
-      </div>
-    </form>
+        <div class="form-feedback error" *ngIf="formError">
+          {{ formError }}
+        </div>
+
+        <div class="form-feedback success" *ngIf="formMessage">
+          {{ formMessage }}
+        </div>
+      </form>
+    </div>
   </div>
 </div>

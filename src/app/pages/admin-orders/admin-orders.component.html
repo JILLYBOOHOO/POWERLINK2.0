@@ -24,7 +24,7 @@
       </div>
       <div class="admin-metric-card">
         <span>Revenue today</span>
-        <strong>${{ totalRevenue }}</strong>
+        <strong>{{ totalRevenue | currency }}</strong>
       </div>
     </div>
 
@@ -56,7 +56,7 @@
         </div>
         <div>
           <p class="admin-label">Total</p>
-          <strong>${{ order.total }}</strong>
+          <strong>{{ order.total | currency }}</strong>
         </div>
       </div>
     </div>

@@ -1,25 +1,58 @@
-<div class="login-container">
-  <div class="auth-brand">
-    <img src="assets/powerlink-icon.svg" alt="PowerLink logo" width="42" height="42">
-    <span>PowerLink Plumbing</span>
+<div class="login-page">
+  <div class="login-card">
+    <!-- Decorative side panel -->
+    <div class="login-side">
+      <h3>Welcome Back to PowerLink</h3>
+      <p>Manage your plumbing supply orders, track bookings, and stay on top of your service history.</p>
+      <ul class="login-side-features">
+        <li>
+          <span class="feature-icon">📦</span>
+          <span>Track supply orders in real time</span>
+        </li>
+        <li>
+          <span class="feature-icon">🔧</span>
+          <span>Book and manage plumber visits</span>
+        </li>
+        <li>
+          <span class="feature-icon">💳</span>
+          <span>View invoices and payment history</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Form section -->
+    <div class="login-form-section">
+      <div class="auth-brand">
+        <img src="assets/powerlink-icon.svg" alt="PowerLink logo" width="42" height="42">
+        <span>PowerLink Plumbing</span>
+      </div>
+      <h2>Customer Login</h2>
+      <p>Access your supply orders, plumber bookings, and payment history.</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="submit()">
+        <div class="input-group">
+          <label for="login-email">Email Address</label>
+          <input id="login-email" type="email" placeholder="Enter your email" formControlName="email" autocomplete="email">
+        </div>
+        <div class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+          Enter a valid email address.
+        </div>
+
+        <div class="input-group">
+          <label for="login-password">Password</label>
+          <input id="login-password" type="password" placeholder="Enter your password" formControlName="password" autocomplete="current-password">
+        </div>
+        <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+          Password must be at least 6 characters.
+        </div>
+
+        <button type="submit" [disabled]="loginForm.invalid">Login</button>
+      </form>
+
+      <p class="feedback" *ngIf="feedbackMessage">{{ feedbackMessage }}</p>
+      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+
+      <p class="signup-prompt">Don't have an account? <a routerLink="/signup">Sign Up</a></p>
+    </div>
   </div>
-  <h2>Customer Login</h2>
-  <p>Access your supply orders, plumber bookings, and payment history.</p>
-
-  <form [formGroup]="loginForm" (ngSubmit)="submit()">
-    <input type="email" placeholder="Email" formControlName="email">
-    <div class="error" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
-      Enter a valid email address.
-    </div>
-
-    <input type="password" placeholder="Password" formControlName="password">
-    <div class="error" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
-      Password must be at least 6 characters.
-    </div>
-
-    <button type="submit" [disabled]="loginForm.invalid">Login</button>
-  </form>
-
-  <p class="feedback" *ngIf="feedbackMessage">{{ feedbackMessage }}</p>
-  <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
 </div>

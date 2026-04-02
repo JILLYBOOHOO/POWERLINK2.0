@@ -114,6 +114,16 @@
   color: var(--text-on-dark);
   border-radius: 999px;
   font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.login-btn:hover,
+.signup-btn:hover,
+.cart-button:hover,
+.utility-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
 }
 
 .user-chip {

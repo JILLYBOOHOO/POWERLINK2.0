@@ -2,7 +2,7 @@
   --brand-900: #0d3b66;
   --brand-700: #1d6fa5;
   --brand-500: #2f7ea3;
-  --accent-400: #f4a261;
+  --accent-400: #c96a20;
   --accent-300: #f7bb7d;
   --surface: #ffffff;
   --surface-muted: #eef3ff;
@@ -58,7 +58,7 @@ app-footer {
   border: none;
   border-radius: 999px;
   padding: 14px 22px;
-  background: #f4a261;
+  background: #c96a20;
   color: white;
   font-weight: 700;
 }
@@ -191,7 +191,7 @@ app-footer {
 
 .card button {
   margin-top: 15px;
-  background: #f4a261;
+  background: #c96a20;
   border: none;
   padding: 10px 15px;
   color: white;
@@ -970,7 +970,7 @@ button:hover:not(:disabled) {
   border: none;
   border-radius: 999px;
   padding: 14px 18px;
-  background: #f4a261;
+  background: #c96a20;
   color: white;
   font-weight: 700;
 }
@@ -1241,7 +1241,7 @@ button:hover:not(:disabled) {
   border: none;
   border-radius: 999px;
   padding: 14px 18px;
-  background: #f4a261;
+  background: #c96a20;
   color: white;
   font-weight: 700;
 }
@@ -1369,7 +1369,12 @@ button:hover:not(:disabled) {
 .mini-quote{margin:0 0 14px;color:#52667a;font-style:italic}
 .mechanic-card-content .price{font-weight:700;color:#0d3b66}
 .plumber-actions{display:flex;gap:10px;flex-wrap:wrap}
-.plumber-actions button{flex:1}
+.plumber-actions button{flex:1;border:none;border-radius:999px;padding:13px 18px;font-weight:700;font-size:.92rem;cursor:pointer;transition:background .25s,transform .15s,box-shadow .25s}
+.plumber-actions button:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(13,59,102,.16)}
+.plumber-actions button:not(.secondary-button){background:#0d3b66;color:#fff}
+.plumber-actions button:not(.secondary-button):hover{background:#164e80}
+.plumber-actions .secondary-button{background:#eef7fc;color:#0d3b66;border:1px solid #c8dbe9}
+.plumber-actions .secondary-button:hover{background:#ddedf8}
 .signup-section{padding:0 0 56px}
 .signup-card{background:#fff;padding:32px;border-radius:20px;box-shadow:0 12px 30px rgba(13,59,102,.1)}
 .signup-card h3,.signup-card p{text-align:center}
@@ -1440,6 +1445,21 @@ button:hover:not(:disabled) {
 .inline-section-heading span{color:#1d6fa5;font-size:.9rem;font-weight:600}
 .payment-form-card input,.payment-form-card textarea{width:100%;padding:14px 15px;margin-bottom:15px;border-radius:14px;border:1px solid #d2deea;background:#fbfdff}
 .payment-form-card textarea{resize:vertical}
+.payment-form-card button[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  background: #d35400; /* Darker, readable orange */
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.15rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 10px;
+}
+.payment-form-card button[type="submit"]:hover { background: #bf4c00; }
+.payment-form-card button[type="submit"]:disabled { background: #ccc; cursor: not-allowed; }
 .payment-methods{display:flex;gap:10px;margin-bottom:18px}
 .method{flex:1;text-align:center;padding:12px;border-radius:14px;border:1px solid #d2deea;cursor:pointer;width:auto;background:#f8fbff;color:#102a43;font-weight:600}
 .method.active{border:2px solid #1e3c72;background:#eef3ff}

@@ -20,6 +20,14 @@
 .register-copy h1,
 .register-card h2 {
   margin-top: 0;
+  color: #0d3b66;
+}
+
+.register-copy p {
+  color: #3b4b5a;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
 }
 
 .register-points {
@@ -41,7 +49,29 @@
 }
 
 .register-points span {
-  color: #52667a;
+  color: #4a5c6d;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  font-weight: 500;
+  display: block;
+}
+
+.register-card button[type="submit"] {
+  width: 100%;
+  padding: 14px 20px;
+  background: #d35400;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-top: 20px;
+}
+
+.register-card button[type="submit"]:hover {
+  background: #bf4c00;
 }
 
 @media (max-width: 900px) {

@@ -25,6 +25,15 @@
       "password": "Password1234",
       "cart": [],
       "createdAt": "2026-03-31T03:00:05.648Z"
+    },
+    {
+      "id": "a35055316f2859f0",
+      "fullName": "leon amavi",
+      "email": "testuser_flow@example.com",
+      "phone": "123456789",
+      "password": "Godluvme.275",
+      "cart": [],
+      "createdAt": "2026-04-01T21:26:08.624Z"
     }
   ],
   "orders": [],

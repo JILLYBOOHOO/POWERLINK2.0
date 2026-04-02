@@ -87,6 +87,10 @@
           <p class="admin-label">Stage</p>
           <span class="status-pill">{{ item.status }}</span>
         </div>
+        <div class="admin-actions" *ngIf="item.status === 'Pending Verification'">
+          <button class="approve-btn" (click)="updateStatus(item, 'Approved')">Approve</button>
+          <button class="deny-btn" (click)="updateStatus(item, 'Denied')">Deny</button>
+        </div>
       </div>
     </div>
   </div>

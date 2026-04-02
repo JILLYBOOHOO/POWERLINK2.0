@@ -1,22 +1,51 @@
 <div class="admin-login-page">
   <div class="admin-login-card">
-    <p class="section-tag">Admin Access</p>
-    <h2>PowerLink Admin Login</h2>
-    <p>Use the admin credentials to access orders and plumber operations.</p>
+    <!-- Decorative side panel -->
+    <div class="admin-side">
+      <h3>PowerLink Admin Portal</h3>
+      <p>Manage orders, plumber operations, and business analytics from one dashboard.</p>
+      <ul class="admin-side-features">
+        <li>
+          <span class="admin-icon">📋</span>
+          <span>Review and manage customer orders</span>
+        </li>
+        <li>
+          <span class="admin-icon">👷</span>
+          <span>Approve and assign plumber profiles</span>
+        </li>
+        <li>
+          <span class="admin-icon">📈</span>
+          <span>Monitor revenue and performance</span>
+        </li>
+      </ul>
+    </div>
 
-    <form [formGroup]="adminForm" (ngSubmit)="submit()">
-      <input type="email" placeholder="Admin Email" formControlName="email">
-      <div class="error" *ngIf="adminForm.get('email')?.touched && adminForm.get('email')?.invalid">
-        Enter a valid admin email.
-      </div>
+    <!-- Form section -->
+    <div class="admin-form-section">
+      <p class="section-tag">Admin Access</p>
+      <h2>PowerLink Admin Login</h2>
+      <p>Use the admin credentials to access orders and plumber operations.</p>
 
-      <input type="password" placeholder="Admin Password" formControlName="password">
-      <div class="error" *ngIf="adminForm.get('password')?.touched && adminForm.get('password')?.invalid">
-        Password must be at least 6 characters.
-      </div>
+      <form [formGroup]="adminForm" (ngSubmit)="submit()">
+        <div class="input-group">
+          <label for="admin-email">Admin Email</label>
+          <input id="admin-email" type="email" placeholder="Enter admin email" formControlName="email">
+        </div>
+        <div class="error" *ngIf="adminForm.get('email')?.touched && adminForm.get('email')?.invalid">
+          Enter a valid admin email.
+        </div>
 
-      <button type="submit" [disabled]="adminForm.invalid">Admin Login</button>
-      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
-    </form>
+        <div class="input-group">
+          <label for="admin-password">Admin Password</label>
+          <input id="admin-password" type="password" placeholder="Enter admin password" formControlName="password">
+        </div>
+        <div class="error" *ngIf="adminForm.get('password')?.touched && adminForm.get('password')?.invalid">
+          Password must be at least 6 characters.
+        </div>
+
+        <button type="submit" [disabled]="adminForm.invalid">Admin Login</button>
+        <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+      </form>
+    </div>
   </div>
 </div>

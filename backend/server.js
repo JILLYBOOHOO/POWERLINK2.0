@@ -25,16 +25,7 @@ const ADMIN_PASSWORD = process.env.POWERLINK_ADMIN_PASSWORD || 'PowerLink123';
 const sessions = new Map();
 
 // MySQL Connection Pool with Railway Support
-const dbConfig = process.env.MYSQL_URL || {
-  host: process.env.MYSQLHOST,
-  user: process.env.MYSQLUSER,
-  password: process.env.MYSQLPASSWORD,
-  database: process.env.MYSQLDATABASE,
-  port: parseInt(process.env.MYSQLPORT || '3306'),
-  waitForConnections: true,
-  connectionLimit: 10,
-  queueLimit: 0
-};
+const dbConfig = process.env.MYSQL_URL || 'mysql://root:xbvlOZRiWaYaNGBxiQXKvzTsqEmTtFQR@interchange.proxy.rlwy.net:10145/railway';
 
 const pool = mysql.createPool(dbConfig);
 

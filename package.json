@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "node backend/server.js",
+    "build": "ng build --configuration production",
+    "dev:frontend": "ng serve",
+    "dev:backend": "node backend/server.js",
     "start:api": "node backend/server.js",
     "start:dev": "powershell -ExecutionPolicy Bypass -File scripts/start-dev.ps1",
-    "build": "ng build",
-    "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
   "private": true,
@@ -22,6 +23,7 @@
     "@angular/router": "~13.3.0",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
+    "express": "^5.2.1",
     "mysql2": "^3.20.0",
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
@@ -40,5 +42,9 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
     "typescript": "~4.6.2"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
   }
 }

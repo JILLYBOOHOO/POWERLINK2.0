@@ -264,7 +264,7 @@ const distPath = path.join(__dirname, '../dist/power-link');
 app.use(express.static(distPath));
 
 // Fallback for SPA routing
-app.get('*', (req, res) => {
+app.use((req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 

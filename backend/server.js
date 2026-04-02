@@ -24,7 +24,7 @@ const ADMIN_PASSWORD = process.env.POWERLINK_ADMIN_PASSWORD || 'PowerLink123';
 const sessions = new Map();
 
 // MySQL Connection Pool with Railway Support
-const pool = mysql.createPool({
+const dbConfig = process.env.MYSQL_URL || {
   host: process.env.MYSQLHOST || 'localhost',
   user: process.env.MYSQLUSER || 'root',
   password: process.env.MYSQLPASSWORD || 'RroJjWAayNeE1@13',
@@ -33,7 +33,9 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0
-});
+};
+
+const pool = mysql.createPool(dbConfig);
 
 // Helper Functions
 function getSession(req) {

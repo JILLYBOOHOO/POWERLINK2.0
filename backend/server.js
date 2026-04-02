@@ -3,6 +3,7 @@ const path = require('path');
 const mysql = require('mysql2/promise');
 const bcrypt = require('bcryptjs');
 const crypto = require('crypto');
+require('dotenv').config();
 
 const app = express();
 app.use(express.json());
@@ -25,10 +26,10 @@ const sessions = new Map();
 
 // MySQL Connection Pool with Railway Support
 const dbConfig = process.env.MYSQL_URL || {
-  host: process.env.MYSQLHOST || 'localhost',
-  user: process.env.MYSQLUSER || 'root',
-  password: process.env.MYSQLPASSWORD || 'RroJjWAayNeE1@13',
-  database: process.env.MYSQLDATABASE || 'powerlink',
+  host: process.env.MYSQLHOST,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
   port: parseInt(process.env.MYSQLPORT || '3306'),
   waitForConnections: true,
   connectionLimit: 10,
@@ -270,13 +271,17 @@ app.use((req, res) => {
   res.sendFile(path.join(distPath, 'index.html'));
 });
 
-// Start Server
-app.listen(PORT, () => {
-  console.log(`PowerLink backend listening on port ${PORT}`);
-  pool.query('SELECT 1').then(() => {
-    console.log('Successfully connected to MySQL database.');
-  }).catch(err => {
-    console.error('MySQL connection failed:', err.message);
-    console.log('HINT: Check your MYSQLHOST, MYSQLUSER, MYSQLPASSWORD environment variables.');
+if (require.main === module) {
+  // Start Server
+  app.listen(PORT, () => {
+    console.log(`PowerLink backend listening on port ${PORT}`);
+    pool.query('SELECT 1').then(() => {
+      console.log('Successfully connected to MySQL database.');
+    }).catch(err => {
+      console.error('MySQL connection failed:', err.message);
+      console.log('HINT: Check your MYSQLHOST, MYSQLUSER, MYSQLPASSWORD environment variables.');
+    });
   });
-});
+}
+
+module.exports = app;
